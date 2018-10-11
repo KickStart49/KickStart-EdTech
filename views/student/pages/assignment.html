@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>KickStart Dashboard</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- endinject -->
+  <link rel="stylesheet" type="text/css" href="../css/datatable.css">
+  <link rel="shortcut icon" href="../images/favicon.png" />
+<link rel="stylesheet" href="../vendors/iconfonts/font-awesome/css/font-awesome.css">
+ <link rel="stylesheet" href="../css/froala_editor.css">
+  <link rel="stylesheet" href="../css/froala_style.css">
+  <link rel="stylesheet" href="../css/plugins/code_view.css">
+  <link rel="stylesheet" href="../css/plugins/colors.css">
+  <link rel="stylesheet" href="../css/plugins/emoticons.css">
+  <link rel="stylesheet" href="../css/plugins/image_manager.css">
+  <link rel="stylesheet" href="../css/plugins/image.css">
+  <link rel="stylesheet" href="../css/plugins/line_breaker.css">
+  <link rel="stylesheet" href="../css/plugins/table.css">
+  <link rel="stylesheet" href="../css/plugins/char_counter.css">
+  <link rel="stylesheet" href="../css/plugins/video.css">
+  <link rel="stylesheet" href="../css/plugins/fullscreen.css">
+  <link rel="stylesheet" href="../css/plugins/quick_insert.css">
+  <link rel="stylesheet" href="../css/plugins/file.css">
+
+  <link rel="stylesheet" href="../css/themes/gray.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-lg-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="../index.html">
+          <img src="../images/logo.png" alt="logo" />
+        </a>
+        <a class="navbar-brand brand-logo-mini" href="../index.html">
+          <img src="../images/logo-mini.svg" alt="logo" />
+        </a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center">
+        <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+          <li class="nav-item">
+            <a href="../#" class="nav-link">Schedule
+              <span class="badge badge-primary ml-1">New</span>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a href="../#" class="nav-link">
+              <i class="mdi mdi-elevation-rise"></i>Progress</a>
+          </li>
+          <li class="nav-item">
+            <a href="../#" class="nav-link">
+              <i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="../#" data-toggle="dropdown" aria-expanded="false">
+              <i class="mdi mdi-file-document-box"></i>
+              <span class="count">7</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+              <div class="dropdown-item">
+                <p class="mb-0 font-weight-normal float-left">You have 7 unread mails
+                </p>
+                <span class="badge badge-info badge-pill float-right">View all</span>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <img src="../images/faces/face4.jpg" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content flex-grow">
+                  <h6 class="preview-subject ellipsis font-weight-medium text-dark">David Grey
+                    <span class="float-right font-weight-light small-text">1 Minutes ago</span>
+                  </h6>
+                  <p class="font-weight-light small-text">
+                    The meeting is cancelled
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <img src="../images/faces/face2.jpg" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content flex-grow">
+                  <h6 class="preview-subject ellipsis font-weight-medium text-dark">Tim Cook
+                    <span class="float-right font-weight-light small-text">15 Minutes ago</span>
+                  </h6>
+                  <p class="font-weight-light small-text">
+                    New product launch
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <img src="../images/faces/face3.jpg" alt="image" class="profile-pic">
+                </div>
+                <div class="preview-item-content flex-grow">
+                  <h6 class="preview-subject ellipsis font-weight-medium text-dark"> Johnson
+                    <span class="float-right font-weight-light small-text">18 Minutes ago</span>
+                  </h6>
+                  <p class="font-weight-light small-text">
+                    Upcoming board meeting
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="../#" data-toggle="dropdown">
+              <i class="mdi mdi-bell"></i>
+              <span class="count">4</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <a class="dropdown-item">
+                <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
+                </p>
+                <span class="badge badge-pill badge-warning float-right">View all</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="mdi mdi-alert-circle-outline mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-medium text-dark">Application Error</h6>
+                  <p class="font-weight-light small-text">
+                    Just now
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-warning">
+                    <i class="mdi mdi-comment-text-outline mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-medium text-dark">Settings</h6>
+                  <p class="font-weight-light small-text">
+                    Private message
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-info">
+                    <i class="mdi mdi-email-outline mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-medium text-dark">New user registration</h6>
+                  <p class="font-weight-light small-text">
+                    2 days ago
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item dropdown d-none d-xl-inline-block">
+            <a class="nav-link dropdown-toggle" id="UserDropdown" href="../#" data-toggle="dropdown" aria-expanded="false">
+              <span class="profile-text">Hello, Prahar Pandya !</span>
+              <img class="img-xs rounded-circle" src="../images/faces/facenew.jpg" alt="Profile image">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+              <a class="dropdown-item p-0">
+                <div class="d-flex border-bottom">
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                    <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+                  </div>
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+                    <i class="mdi mdi-account-outline mr-0 text-gray"></i>
+                  </div>
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                    <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
+                  </div>
+                </div>
+              </a>
+              <a class="dropdown-item mt-2">
+                Manage Accounts
+              </a>
+              <a class="dropdown-item">
+                Change Password
+              </a>
+              <a class="dropdown-item">
+                Check Inbox
+              </a>
+              <a class="dropdown-item">
+                Sign Out
+              </a>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item nav-profile">
+            <div class="nav-link">
+              <div class="user-wrapper">
+                <div class="profile-image">
+                  <img src="../images/faces/facenew.jpg" alt="profile image">
+                </div>
+                <div class="text-wrapper">
+                  <p class="profile-name">Prahar Pandya</p>
+                  <div>
+                    <small class="designation text-muted">Student</small>
+                    <span class="status-indicator online"></span>
+                  </div>
+                </div>
+              </div>
+              <a class="btn btn-dafault" data-toggle="modal" data-target="#classmodal"><button class="btn btn-success btn-block">Join Class
+                <i class="mdi mdi-plus"></i>
+              </button></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">
+              <i class="menu-icon mdi mdi-television"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="../#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-content-copy"></i>
+              <span class="menu-title">Classes</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="../pages/class.html">Teacher's class</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../pages/allclass.html">Show all classes</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link btn btn-dafault" data-toggle="modal" data-target="#classmodal">Join Class
+                    </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/assignment.html">
+              <i class="menu-icon mdi mdi-sticker"></i>
+              <span class="menu-title">Assignments</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="../#auth" aria-expanded="false" aria-controls="auth">
+              <i class="menu-icon mdi mdi-restart"></i>
+              <span class="menu-title">Parents</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link btn btn-dafault" data-toggle="modal" data-target="#parentmodal"> Invite Parent  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../pages/samples/login.html">Your code : pn5x86yuu </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          
+          
+          <div class="row">
+            <div class="col-lg-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4>Shivu's Class</h4>
+                  <br>
+                  <div class="table-responsive" style="text-align: center;">
+                    <table class="table table-bordered table-hover" id="myTable">
+                      <thead>
+                        <tr>
+                          <th>
+                            #
+                          </th>
+                          <th>
+                            Assignment
+                          </th>
+                          <th>
+                            Status
+                          </th>
+                          <th>
+                            Score
+                          </th>
+                          <th>
+                            Grade
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                        
+                        <tr>
+                          <td class="font-weight-medium">
+                            1
+                          </td>
+                          <td>
+                            do the following.
+                          </td>
+                          <td>
+                            <label class="badge badge-danger">Pending</label>
+                          </td>
+                          <td>
+                            -
+                          </td>
+                          <td class="text-danger"> -
+                            
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-medium">
+                            2
+                          </td>
+                          <td>
+                            do the following.
+                          </td>
+                          <td>
+                            <label class="badge badge-success">Evaluated</label>
+                          </td>
+                          <td>
+                            60/80
+                          </td>
+                          <td class="text-danger"> AB 
+                            
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-medium">
+                            1
+                          </td>
+                          <td>
+                            do the following.
+                          </td>
+                          <td>
+                            <label class="badge badge-info">Submitted</label>
+                          </td>
+                          <td>
+                            -
+                          </td>
+                          <td class="text-danger"> -
+                            
+                          </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 grid-margin">
+              <div class="card">
+                
+                <div class="card-body">
+                  <div class="row">
+                  <h4 class="card-tiile col-6">Class Progress</h4>
+                  <div class="col-6">
+                    <div class="progress">
+                              <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                            </div>30%
+                  </div>
+                </div>
+                <br><br>
+                  <div class="row">
+                    <div id="tab-sidebar" class="col-lg-2 nav " role="tablist" aria-orientation="vertical">
+                      <a id="pill-A" class="nav-link col-lg-12 active btn btn-light" data-toggle="pill" href="#tab-A" role="tab" aria-controls="tab-A" aria-selected="true">Chapter 1</a>
+                      <a id="pill-B" class="nav-link col-lg-12 btn btn-light" data-toggle="pill" href="#tab-B" role="tab" aria-controls="tab-B" aria-selected="false">Assignment 1</a>
+                      <a id="pill-C" class="nav-link col-lg-12  btn btn-light" data-toggle="pill" href="#tab-C" role="tab" aria-controls="tab-C" aria-selected="false">Assignment 1</a>
+                      <a id="pill-D" class="nav-link col-lg-12 btn btn-light" data-toggle="pill" href="#tab-D" role="tab" aria-controls="tab-D" aria-selected="false">Assignment 1</a>
+                      <a id="pill-E" class="nav-link col-lg-12 disabled btn btn-light" data-toggle="pill" href="#tab-E" role="tab" aria-controls="tab-E" aria-selected="false">Tutorial 1</a>
+                      <a id="pill-E" class="nav-link col-lg-12 disabled btn btn-light" data-toggle="pill" href="#tab-E" role="tab" aria-controls="tab-E" aria-selected="false">Chapter 2</a>
+                      <a id="pill-E" class="nav-link col-lg-12 disabled btn btn-light" data-toggle="pill" href="#tab-E" role="tab" aria-controls="tab-E" aria-selected="false">Assignment 2</a>
+                      <a id="pill-E" class="nav-link col-lg-12 disabled btn btn-light" data-toggle="pill" href="#tab-E" role="tab" aria-controls="tab-E" aria-selected="false">Assignment 2</a>
+                      <a id="pill-E" class="nav-link col-lg-12 disabled btn btn-light" data-toggle="pill" href="#tab-E" role="tab" aria-controls="tab-E" aria-selected="false">Assignment 2</a>
+                      <a id="pill-E" class="nav-link col-lg-12 disabled btn btn-light" data-toggle="pill" href="#tab-E" role="tab" aria-controls="tab-E" aria-selected="false">Assignment 2</a>
+                      <a id="pill-E" class="nav-link col-lg-12 disabled btn btn-light" data-toggle="pill" href="#tab-E" role="tab" aria-controls="tab-E" aria-selected="false">Assignment 2</a>
+                    </div>
+
+                    <div id="tab-content" class="col-lg-10 tab-content">
+                      <div id="tab-A" class="tab-pane fade show active" role="tabpanel" aria-labelledby="pill-A"><h3>What is Lorem Ipsum?</h3><br>
+
+        <p>The default theme of the WYSIWYG HTML editor can be changed to one that better fits the color palette of your website. You can also create your own theme and customize the rich text editor's interface the way you want using our <a href="http://www.froala.dev/wysiwyg-editor/customize" title="Customizer" target="_blank">customizer</a>.</p>
+
+          <p>The desired theme can be set using the <a href="http://www.froala.dev/wysiwyg-editor/docs/options#theme" title="theme option" target="_blank">theme</a> option. Don't forget to include the corresponding CSS theme file.</p>
+
+          <img class="fr-fir" src="../../img/photo1.jpg" alt="Old Clock" width="300"/>Lorem <strong>ipsum</strong> dolor sit amet, consectetur <strong>adipiscing <em>elit.</em> Donec</strong> facilisis diam in odio iaculis blandit. Nunc eu mauris sit amet purus <strong>viverra</strong><em> gravida</em> ut a dui.<br/>
+          <ul><li>Vivamus nec rutrum augue, pharetra faucibus purus. Maecenas non orci sagittis, vehicula lorem et, dignissim nunc.</li> <li>Suspendisse suscipit, diam non varius facilisis, enim libero tincidunt magna, sit amet iaculis eros libero sit amet eros. Vestibulum a rhoncus felis.<ol><li>Nam lacus nulla, consequat ac lacus sit amet, accumsan pellentesque risus. Aenean viverra mi at urna mattis fermentum.</li> <li>Curabitur porta metus in tortor elementum, in semper nulla ullamcorper. Vestibulum mattis tempor tortor quis gravida. In rhoncus risus nibh. Nullam condimentum dapibus massa vel fringilla. Sed hendrerit sed est quis facilisis. Ut sit amet nibh sem. Pellentesque imperdiet mollis libero.</li></ol></li></ul>
+
+          <table style="width: 100%;">
+            <tr><td>asdasd</td><td>asdasdasd</td></tr>
+          </table>
+
+          Sed dictum dictum tristique. Proin eros turpis, ultricies eu sapien eget, ornare rutrum ipsum. Pellentesque eros nisl, ornare nec ipsum sed, aliquet sollicitudin erat. Nulla tincidunt porta <strong>vehicula.</strong><br/>
+
+          <a href="http://google.com" title="Aenean sed hendrerit">Aenean sed hendrerit</a> velit. Nullam eu mi dolor. Maecenas et erat risus. Nulla ac auctor diam, non aliquet ante. Fusce ullamcorper, ipsum id tempor lacinia, sem tellus malesuada libero, quis ornare sem massa in orci. Sed dictum dictum tristique. Proin eros turpis, ultricies eu sapien eget, ornare rutrum ipsum. Pellentesque eros nisl, ornare nec ipsum sed, aliquet sollicitudin erat. Nulla tincidunt porta <strong>vehicula.</strong><br/>
+
+          <i>Nullam laoreet</i> imperdiet orci ac euismod. Curabitur vel lectus nisi. Phasellus accumsan aliquet augue, eu rutrum tellus iaculis in. Nunc viverra ultrices mollis. Curabitur malesuada nunc massa, ut imperdiet arcu lobortis sed. Cras ac arcu mauris. Maecenas id lectus nisl. Donec consectetur scelerisque quam at ultricies. Nam quis magna iaculis, condimentum metus ut, elementum metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus id tempus nisi.<br/></div>
+                      <div id="tab-B" class="tab-pane fade" role="tabpanel" aria-labelledby="pill-B">
+                        <div class="alert alert-success">
+                        <p class="alert alert-light"><b>Your Assignement has been successfully evaluated and graded by your class teacher.</b></p>
+                        <p class="alert alert-light"> You have got <b>20/30</b> with grade <b>AB</b>. </p>
+                        <p class="alert alert-light"> Your New Rank in Class is <b>169</b>.</p>
+                        <p class="alert alert-light"> Assignment Note by your Teacher : <b>Good</b> </p></div>
+
+                        <p class="alert alert-primary">PRO TIP : Increase your Class Rank by submitting appropriate Assignments to the teacher.</p>
+
+                      </div>
+                      <div id="tab-C" class="tab-pane fade" role="tabpanel" aria-labelledby="pill-C">
+                        <div class="alert alert-dark">
+                        <p class="alert alert-light"> You have successfully submitted your Assignment.</p>
+                        <p class="alert alert-light"> You can access the new chapter now. </p>
+                        <p class="alert alert-light"> We will inform you when your teacher will finish the evaluation.</p>
+                        <p class="alert alert-light"> It may take longer time than usual in some cases. Meanwhile, Try something New.</p>
+                      </div>
+                        <p class="alert alert-dark">PRO TIP : Increase your Class Rank by submitting appropriate Assignments to the teacher.</p>
+                      </div>
+                      <div id="tab-D" class="tab-pane fade" role="tabpanel" aria-labelledby="pill-D">
+                        <form method="post">
+                          <h4>Assignment : What is Lorem Ipsum?</h4>
+                          <br>
+                          <textarea id="edit"></textarea>
+                          <br>
+                          <input class="btn btn-dark" type="submit" name="submit" value="Submit Assignment">
+                        </form>
+                      </div>
+                      <div id="tab-E" class="tab-pane fade" role="tabpanel" aria-labelledby="pill-E">[E]</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4>Class Discussion</h4>
+                  <br>
+                      <div id="disqus_thread"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
+              <a href="../http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
+              <i class="mdi mdi-heart text-danger"></i>
+            </span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="../vendors/js/vendor.bundle.base.js"></script>
+  <script src="../vendors/js/vendor.bundle.addons.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="../js/off-canvas.js"></script>
+  <script src="../js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../js/dashboard.js"></script>
+  <!-- End custom js for this page-->
+  <script type="text/javascript" src="../js/datatable.js"></script>
+  <script type="text/javascript">
+  	$(document).ready( function () {
+    $('#myTable').DataTable();
+  });
+  </script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+  <script type="text/javascript" src="../js/froala_editor.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/align.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/code_beautifier.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/code_view.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/colors.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/draggable.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/emoticons.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/font_size.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/font_family.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/image.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/file.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/image_manager.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/line_breaker.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/link.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/lists.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/paragraph_format.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/paragraph_style.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/video.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/table.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/url.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/entities.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/char_counter.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/inline_style.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/quick_insert.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/save.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/fullscreen.min.js"></script>
+  <script type="text/javascript" src="../js/plugins/quote.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $('#edit').froalaEditor({
+        theme: 'gray'
+      })
+    });
+  </script>
+  <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = "http://praharpandya.blogspot.com";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "2"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://pandyaprahar-blogspot-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+</body>
+
+</html>
