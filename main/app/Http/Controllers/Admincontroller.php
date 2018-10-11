@@ -23,16 +23,20 @@ class Admincontroller extends Controller
         
         if($admin->permission == "student")
         {
-            return redirect()->route('student');
+            return view("user.student");
         }
         if($admin->permission == "teacher")
         {
-            return redirect()->route('teacher');
+            return view('user.teacher');
         }
         if($admin->permission == "parent")
         {
-            return redirect()->route('parent');
-        } 
+            return view('user.parent');
+        }
+        if($admin->permission == "administrator")
+        {
+            return view('user.admin');
+        }  
     }
         
     public function code()

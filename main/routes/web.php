@@ -58,6 +58,11 @@ Route::get('/in/{username}', [
     'as' => 'profile'
 ]);
 
+Route::get('/showadmin', [
+    'uses' => 'admincontroller@showadmin',
+    'as' => 'showadmin'
+]);
+
 Route::get('/dashboard', function () {
     return view('welcome');
 })->name('dashboard');

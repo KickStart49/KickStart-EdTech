@@ -13,9 +13,9 @@
 	 				<label class="emaillabel">Enter your email</label>
 	    			<input type="email" class="form-control log margin thick wait" id="email" name="email">
 	    			<p class="loginmessage para"></p>
-	    			<br><p>Already our Member ?</p><a href="{{ route('register') }}">Register</a>
+	    			
 	    			<div class="form-group">
-	    				<a href="" class="c float-left margin">Forgot email?</a>
+	    				<p class=" float-left margin">Already our Member ? &nbsp;	<a class="btn btn-default" href="{{ route('register') }}">Register</a></p>
 	    				<input type="button" onclick="loginsubmit()" id="next" class="WaitOnClick log float-right btn btn-primary" value="Next">
 	    				<!--onkeypress="handleEnter(event)"-->
 	    			</div>
