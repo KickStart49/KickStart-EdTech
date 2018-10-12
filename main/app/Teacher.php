@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
 	protected $fillable = [
-        'class_id'
+        'teacher_code','user_id'
     ];
-    public function student()
+    public function class()
     {
-        return $this->belongsToMany('App\Student');
+        return $this->belongsToMany('App\class');
     }
     public function user()
     {

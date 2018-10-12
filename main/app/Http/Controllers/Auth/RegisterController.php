@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -41,6 +41,19 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    private function getToken($length, $seed){    
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "0123456789";
+
+        mt_srand($seed);      // Call once. Good since $application_id is unique.
+
+        for($i=0;$i<$length;$i++){
+            $token .= $codeAlphabet[mt_rand(0,strlen($codeAlphabet)-1)];
+        }
+        return $token;
     }
 
     /**
@@ -67,7 +80,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -75,7 +88,32 @@ class RegisterController extends Controller
             
         ]);
 
-        
-        
+        $id = $user->id;
+
+        if( $data['category'] == "teacher" ){
+
+            $token = $this->getToken(6, $id);
+            $code = 'KS'. $token . substr(strftime("%Y", time()),2);
+
+            Teacher::create([
+                'user_id' => $id,
+                'teacher_code' => $code,
+            
+            ]);
+        }
+
+        if( $data['category'] == "student" ){
+
+            $token = $this->getToken(6, $user->id);
+            $code = 'KS'. $token . substr(strftime("%Y", time()),2);
+
+            Student::create([
+                'user_id' => $id,
+                'student_code' => $code,
+            
+            ]);
+        }
+
+        return $user;   
     }
 }
