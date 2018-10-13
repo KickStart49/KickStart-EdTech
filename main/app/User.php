@@ -35,14 +35,11 @@ class User extends Authenticatable
     }
     public function student()
     {
-        return $this->hasMany('App\Student');
+        return $this->hasOne('App\Student');
     }
     public function teacher()
     {
-        return $this->hasMany('App\Teacher');
+        return $this->hasOne('App\Teacher');
     }    
-    public function parentclass()
-    {
-        return $this->hasMany('App\ParentClass');
-    }
+
 }

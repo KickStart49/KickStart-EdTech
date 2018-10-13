@@ -9,14 +9,15 @@ class Teacher extends Model
 	protected $fillable = [
         'teacher_code','user_id'
     ];
-    public function class()
+    public function teacher_class()
     {
-        return $this->belongsToMany('App\class');
+        return $this->hasMany('App\teacher_class');
     }
     public function user()
     {
         return $this->belongsTo('App\User');
     }
     
+
 
 }

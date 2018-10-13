@@ -63,7 +63,15 @@ Route::get('/dashboard', [
     'as' => 'showadmin'
 ]);
 
+Route::get('/testclass', [
+    'uses' => 'admincontroller@addclass',
+    'as' => 'testclass'
+]);
 
+Route::get('/joinclass', [
+    'uses' => 'admincontroller@joinclass',
+    'as' => 'joinclass'
+]);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

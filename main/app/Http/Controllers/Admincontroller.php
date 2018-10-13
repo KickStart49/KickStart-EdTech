@@ -8,6 +8,8 @@ use App\Student;
 use App\User;
 use App\Teacher;
 use App\ParentClass;
+use App\teacher_class;
+use App\student_class;
 use App\student_teacher;
 use DB;
 use App\Assignment;
@@ -37,6 +39,54 @@ class Admincontroller extends Controller
         {
             return view('user.admin');
         }  
+    }
+
+    public function addclass(){
+
+        $id = Auth::id();
+        $token = $this->getToken(6, $id);
+        $code = 'KS'. $token . substr(strftime("%Y", time()),2);
+
+        $user = Auth::user();
+        $teacher = $user->teacher;
+        
+        
+        teacher_class::create([
+                'user_id' => $id,
+                'class_admin' => 1,
+                'class_code' => $code,
+            ]);
+        return redirect()->back();
+    }
+    public function joinclass(){
+
+        $id = Auth::id();
+        $token = $this->getToken(6, $id);
+        $code = 'KS'. $token . substr(strftime("%Y", time()),2);
+
+        $user = Auth::user();
+        $student = $user->student;
+        
+        student_class::create([
+                'user_id' => $id,
+                'class_code' => $code,
+            ]);
+        return redirect()->back();
+        
+
+        return redirect()->back();
+    }
+    private function getToken($length, $seed){    
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "0123456789";
+
+        mt_srand($seed);      // Call once. Good since $application_id is unique.
+
+        for($i=0;$i<$length;$i++){
+            $token .= $codeAlphabet[mt_rand(0,strlen($codeAlphabet)-1)];
+        }
+        return $token;
     }
         
     public function code()

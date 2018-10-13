@@ -8,4 +8,6 @@ class ->m  teachers,students
 
 stu -> id,user_id,student_code
 class -> id,user_id,teacher_code,student_code,class_code
-teacher -> id,user_id,teacher_code	
+teacher -> id,user_id,teacher_code
+
+	
