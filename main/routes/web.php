@@ -11,11 +11,19 @@
 |
 */
 
+// .......................Welcome Page .............
+// .......................Welcome Page .............
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-// .......................Login Routes .............
+// .......................Authentication .............
+// .......................Authentication .............
+
+Auth::routes();
+
+Auth::routes(['verify' => true]);
 
 Route::prefix('login')->group(function () {
     
@@ -53,39 +61,84 @@ Route::prefix('login')->group(function () {
  
 });
 
-Route::get('/in/{username}', [
-    'uses' => 'profilecontroller@user',
-    'as' => 'profile'
-]);
+// .......................Main Admin Routes .............
+// .......................Main Admin Routes .............
 
-Route::get('/dashboard', [
-    'uses' => 'admincontroller@showadmin',
-    'as' => 'showadmin'
-]);
+Route::prefix('admin')->group(function () {
 
-Route::get('/testclass', [
-    'uses' => 'admincontroller@addclass',
-    'as' => 'testclass'
-]);
+    Route::get('/dashboard', [
+        'uses' => 'AdminController@showadmin',
+        'as' => 'showadmin'
+    ]);
 
-Route::post('/joinclass', [
-    'uses' => 'admincontroller@joinclass',
-    'as' => 'joinclass'
-]);
+});
 
-Route::get('/student', [
-    'uses' => 'StudentController@index',
-    'as' => 'student'
-]);
+// .......................Teacher .............
+// .......................Teacher .............
 
-Route::get('/teacher', [
-    'uses' => 'TeacherController@index',
-    'as' => 'teacher'
-]);
+Route::prefix('admin/kickstart/dashboard/teacher')->group(function () {
 
-Auth::routes();
+    Route::get('/', [
+        'uses' => 'TeacherController@index',
+        'as' => 'teacher'
+    ]);
+
+    Route::get('/addclass', [
+        'uses' => 'TeacherController@addclass',
+        'as' => 'teacher.addclass'
+    ]);
+
+});
+
+// .......................Student .............
+// .......................Student .............
+
+Route::prefix('admin/kickstart/dashboard/student')->group(function () {
+
+    Route::get('/', [
+        'uses' => 'StudentController@index',
+        'as' => 'student'
+    ]);
+
+    Route::post('/joinclass', [
+        'uses' => 'StudentController@joinclass',
+        'as' => 'student.joinclass'
+    ]);
+
+});
+// .......................Parent .............
+// .......................Parent .............
+
+Route::prefix('admin/kickstart/dashboard/parent')->group(function () {
+
+
+});
+
+// .......................Profile Routes .............
+// .......................Profile Routes .............
+
+Route::prefix('admin/kickstart/dashboard/teacher')->group(function () {
+
+    Route::get('/in/{username}', [
+        'uses' => 'profilecontroller@user',
+        'as' => 'profile'
+    ]);
+
+});
+
+
+// .......................Main Class Routes(Created by teachers) .............
+// .......................Main Class Routes(Created by teachers) .............
+
+
+
+
+// .......................Other Routes .............
+// .......................Other Routes .............
+
+
+
+// .......................Laravel Default .............
+// .......................Laravel Default .............
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes(['verify' => true]);
-

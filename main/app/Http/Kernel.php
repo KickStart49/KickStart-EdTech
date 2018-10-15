@@ -67,8 +67,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'code' => \App\Http\Middleware\code::class,
-        'codegenerate' => \App\Http\Middleware\codegenerator::class,
         'emailverify' => \App\Http\Middleware\verifyEmail::class,
         
     ];
@@ -91,9 +89,7 @@ class Kernel extends HttpKernel
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
 
-        \App\Http\Middleware\codegenerator::class,
         \App\Http\Middleware\verifyemail::class,
-        \App\Http\Middleware\code::class,
         \App\Http\Middleware\RevalidateBackHistory::class,
 
     ];
