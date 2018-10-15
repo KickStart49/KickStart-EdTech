@@ -53,8 +53,9 @@ class Admincontroller extends Controller
         $getcode = $teacher ->code;
         
         $token = $this->getToken(6, $id);
-        $code = 'KS'. $token . substr(strftime("%Y", time()),2);
-        
+        $code = 'KSC'. $token . substr(strftime("%Y", time()),2) . sha1(time());
+        $code = str_limit($code, $limit = 20, $end = '');
+
         main_class::create([
                 'code' => $code,
                 'assignment' => "new aassignment",
@@ -63,7 +64,7 @@ class Admincontroller extends Controller
                 'teacher_code' => $getcode,
                 'class_admin' => 1,
                 'main_class_code' => $code,
-            ]);
+        ]);
 
 
 

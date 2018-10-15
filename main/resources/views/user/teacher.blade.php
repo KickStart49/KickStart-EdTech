@@ -6,7 +6,7 @@ teacher
 	@foreach($classes as $class)
 
 		<p>New Class Created : {{ $class->main_class->code }}</p>
-		<p>It's Assignment : {{ $class->main_class->assignment }}</p>
+		<p>Class Assignment : {{ $class->main_class->assignment }}</p>
 
 
 	@endforeach

@@ -7,7 +7,7 @@ student
 	@foreach($classes as $class)
 
         <p>Joined new class : {{ $class->main_class->code }}</p>
-		<p>It's Assignment : {{ $class->main_class->assignment }}</p>
+		<p>Class Assignment : {{ $class->main_class->assignment }}</p>
 
 
 	@endforeach

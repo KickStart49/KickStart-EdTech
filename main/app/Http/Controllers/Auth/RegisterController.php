@@ -93,7 +93,8 @@ class RegisterController extends Controller
         if( $data['category'] == "teacher" ){
 
             $token = $this->getToken(6, $id);
-            $code = 'KS'. $token . substr(strftime("%Y", time()),2);
+            $code = 'KST'. $token . substr(strftime("%Y", time()),2) . sha1(time());
+            $code = str_limit($code, $limit = 20, $end = '');
 
             Teacher::create([
                 'user_id' => $id,
@@ -105,7 +106,8 @@ class RegisterController extends Controller
         if( $data['category'] == "student" ){
 
             $token = $this->getToken(6, $user->id);
-            $code = 'KS'. $token . substr(strftime("%Y", time()),2);
+            $code = 'KSS'. $token . substr(strftime("%Y", time()),2) . sha1(time());
+            $code = str_limit($code, $limit = 20, $end = '');
 
             Student::create([
                 'user_id' => $id,
