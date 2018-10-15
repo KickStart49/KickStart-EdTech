@@ -70,19 +70,22 @@ class Admincontroller extends Controller
 
         return redirect()->back();
     }
-    public function joinclass(){
+    public function joinclass(Request $request){
+
 
         $user = Auth::user();
         $student = $user->student;
         $id = $user->id;
 
-        $getcode = $student -> code;
+        $getcode = $student ->code;
 
-        student_class::create([
+
+        if(main_class::find($request->code)){
+            student_class::create([
                 'student_code' => $getcode,
-                'main_class_code' => "KSNXA6HB18",
+                'main_class_code' => $request->code,
             ]);
-
+        }
         
         
 

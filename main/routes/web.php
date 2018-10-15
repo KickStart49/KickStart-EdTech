@@ -68,7 +68,7 @@ Route::get('/testclass', [
     'as' => 'testclass'
 ]);
 
-Route::get('/joinclass', [
+Route::post('/joinclass', [
     'uses' => 'admincontroller@joinclass',
     'as' => 'joinclass'
 ]);

@@ -1,6 +1,10 @@
 student
 
-<a href="joinclass">Join Class</a>
+<form method="post" action="joinclass">
+    {{ csrf_field() }}
+    <input type="string" name="code" placeholder="Enter class code">
+    <input type="submit" name="submit" value="Join Class">
+</form>
 
 @if(!empty($classes))
 	
