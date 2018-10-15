@@ -72,6 +72,17 @@ Route::get('/joinclass', [
     'uses' => 'admincontroller@joinclass',
     'as' => 'joinclass'
 ]);
+
+Route::get('/student', [
+    'uses' => 'StudentController@index',
+    'as' => 'student'
+]);
+
+Route::get('/teacher', [
+    'uses' => 'TeacherController@index',
+    'as' => 'teacher'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

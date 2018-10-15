@@ -1,7 +1,17 @@
 teacher
 
 <a href="/testclass">Add Class</a>
+@if(!empty($classes))
+	
+	@foreach($classes as $class)
 
+		<p>New Class Created : {{ $class->main_class->code }}</p>
+		<p>It's Assignment : {{ $class->main_class->assignment }}</p>
+
+
+	@endforeach
+
+@endif
 
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"

@@ -9,6 +9,7 @@ use App\User;
 use App\Teacher;
 use App\ParentClass;
 use App\teacher_class;
+use App\main_class;
 use App\student_class;
 use App\student_teacher;
 use DB;
@@ -25,11 +26,11 @@ class Admincontroller extends Controller
         
         if($admin->permission == "student")
         {
-            return view("user.student");
+            return redirect()->route('student');
         }
         if($admin->permission == "teacher")
         {
-            return view('user.teacher');
+            return redirect()->route('teacher');
         }
         if($admin->permission == "parent")
         {
@@ -43,35 +44,45 @@ class Admincontroller extends Controller
 
     public function addclass(){
 
-        $id = Auth::id();
-        $token = $this->getToken(6, $id);
-        $code = 'KS'. $token . substr(strftime("%Y", time()),2);
+        
 
         $user = Auth::user();
-        $teacher = $user->teacher;
+        $teacher = $user ->teacher;
+        $id = $user->id;
+
+        $getcode = $teacher ->code;
         
+        $token = $this->getToken(6, $id);
+        $code = 'KS'. $token . substr(strftime("%Y", time()),2);
         
+        main_class::create([
+                'code' => $code,
+                'assignment' => "new aassignment",
+        ]);        
         teacher_class::create([
-                'user_id' => $id,
+                'teacher_code' => $getcode,
                 'class_admin' => 1,
-                'class_code' => $code,
+                'main_class_code' => $code,
             ]);
+
+
+
         return redirect()->back();
     }
     public function joinclass(){
 
-        $id = Auth::id();
-        $token = $this->getToken(6, $id);
-        $code = 'KS'. $token . substr(strftime("%Y", time()),2);
-
         $user = Auth::user();
         $student = $user->student;
-        
+        $id = $user->id;
+
+        $getcode = $student -> code;
+
         student_class::create([
-                'user_id' => $id,
-                'class_code' => $code,
+                'student_code' => $getcode,
+                'main_class_code' => "KSNXA6HB18",
             ]);
-        return redirect()->back();
+
+        
         
 
         return redirect()->back();

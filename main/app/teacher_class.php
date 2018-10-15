@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class teacher_class extends Model
 {
     protected $fillable = [
-        'teacher_code','user_id','class_code','class_admin'
+        'teacher_code','main_class_code','class_admin'
     ];
     public function teacher()
     {
@@ -16,6 +16,6 @@ class teacher_class extends Model
 
     public function main_class()
     {
-        return $this->hasOne('App\main_class');
+        return $this->belongsTo('App\main_class');
     }
 }

@@ -6,9 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+
+    protected $primaryKey = 'code';
+    
 	protected $fillable = [
-        'student_code','user_id'
+        'code','user_id'
     ];
+
+    protected $casts = ['code' => 'string'];
+
+    public $incrementing = false;
    
    	public function user()
     {

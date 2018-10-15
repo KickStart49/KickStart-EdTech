@@ -97,7 +97,7 @@ class RegisterController extends Controller
 
             Teacher::create([
                 'user_id' => $id,
-                'teacher_code' => $code,
+                'code' => $code,
             
             ]);
         }
@@ -109,7 +109,7 @@ class RegisterController extends Controller
 
             Student::create([
                 'user_id' => $id,
-                'student_code' => $code,
+                'code' => $code,
             
             ]);
         }

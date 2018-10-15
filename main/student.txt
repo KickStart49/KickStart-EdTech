@@ -6,8 +6,18 @@ stu m->m classes
 class ->m assignments
 class ->m  teachers,students
 
-stu -> id,user_id,student_code
-class -> id,user_id,teacher_code,student_code,class_code
-teacher -> id,user_id,teacher_code
+
+stu -> user_id,student_code
+teacher -> user_id,teacher_code
+stu_class -> user_id,class_code
+teacher_class -> user_id,class_code,class_admin
+
+teacher -m> tea_class
+stu -m> stu_class
+
+
+
+
+
 
 	

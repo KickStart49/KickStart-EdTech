@@ -14,10 +14,11 @@ class CreateMainClassesTable extends Migration
     public function up()
     {
         Schema::create('main_classes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('class_code');
+
+            $table->string('code')->primary();
             $table->string('assignment');
             $table->timestamps();
+
         });
     }
 
