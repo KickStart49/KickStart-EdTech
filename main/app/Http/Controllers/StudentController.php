@@ -19,8 +19,9 @@ class StudentController extends Controller
 
         $classlist = main_class::all();
 
-	    return view('user.student')->with('classes',$classes)
-                                    ->with('classlist',$classlist);
+	    return view('user.student.index')->with('classes',$classes)
+                                    ->with('classlist',$classlist)
+                                    ->with('stuinfo',$student);
 	}
 
 	public function joinclass(Request $request){
@@ -41,6 +42,20 @@ class StudentController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function allclasses(){
+    
+        $user = Auth::user();
+        $student = $user->student;
+
+        $classes = $student->student_class;
+
+        $classlist = main_class::all();
+
+        return view('user.student.allclasses')->with('classes',$classes)
+                                    ->with('classlist',$classlist)
+                                    ->with('stuinfo',$student);
     }
     
     private function getToken($length, $seed){    

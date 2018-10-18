@@ -105,6 +105,11 @@ Route::prefix('admin/kickstart/dashboard/student')->group(function () {
         'as' => 'student.joinclass'
     ]);
 
+    Route::get('/allclasses', [
+        'uses' => 'StudentController@allclasses',
+        'as' => 'student.allclasses'
+    ]);
+
 });
 // .......................Parent .............
 // .......................Parent .............
