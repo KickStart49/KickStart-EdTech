@@ -110,6 +110,11 @@ Route::prefix('admin/kickstart/dashboard/student')->group(function () {
         'as' => 'student.allclasses'
     ]);
 
+    Route::post('/inviteparent', [
+        'uses' => 'StudentController@inviteparent',
+        'as' => 'student.inviteparent'
+    ]);
+
 });
 // .......................Parent .............
 // .......................Parent .............

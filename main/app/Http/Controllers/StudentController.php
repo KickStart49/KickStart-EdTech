@@ -8,6 +8,9 @@ use App\User;
 use App\student_class;
 use App\main_class;
 
+use App\Mail\InviteParent;
+use Illuminate\Support\Facades\Mail;
+
 class StudentController extends Controller
 {
 	public function index(){
@@ -40,6 +43,21 @@ class StudentController extends Controller
                 'main_class_code' => $request->code,
             ]);
         }
+
+        return redirect()->back();
+    }
+
+    public function inviteparent(Request $request){
+
+
+        $user = Auth::user();
+        $student = $user->student;
+        $id = $user->id;
+
+        $childcode = $student ->code;
+        $childemail = $user->email; 
+        $childname = $user->name;
+        Mail::to($request->parentemail)->send(new InviteParent($childcode,$childemail,$childname));
 
         return redirect()->back();
     }

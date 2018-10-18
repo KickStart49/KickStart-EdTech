@@ -7,24 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>KickStart Dashboard</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="{{asset('css/materialdesignicons.min.css')}}">
-  <link rel="stylesheet" href="{{asset('css/vendor.bundle.base.css')}}">
-  <link rel="stylesheet" href="{{asset('css/vendor.bundle.addons.css')}}">
+  <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
-  <link rel="stylesheet" type="text/css" href="{{asset('css/datatable.css')}}">
+  <link rel="stylesheet" type="text/css" href="css/datatable.css">
   <link rel="shortcut icon" href="images/favicon.png" />
-  <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
-  <style type="text/css">
-    .nav-link.active{
-      color: #308ee0!important;
-    }
-  </style>
-  @yield('css')
+<link rel="stylesheet" href="vendors/iconfonts/font-awesome/css/font-awesome.css">
  
 </head>
 
@@ -33,8 +27,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="{{route('welcome')}}">
-          <img src="{{asset('images/logo.png')}}" alt="logo" />
+        <a class="navbar-brand brand-logo" href="index.html">
+          <img src="images/logo.png" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.html">
           <img src="images/logo-mini.svg" alt="logo" />
@@ -47,7 +41,7 @@
               <span class="badge badge-primary ml-1">New</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a href="#progress" class="nav-link">
               <i class="mdi mdi-elevation-rise"></i>Progress</a>
           </li>
@@ -170,7 +164,7 @@
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Hello, Prahar Pandya !</span>
-              <img class="img-xs rounded-circle" src="{{asset('images/prahar.jpg')}}" alt="Profile image">
+              <img class="img-xs rounded-circle" src="images/faces/facenew.jpg" alt="Profile image">
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-item p-0">
@@ -192,11 +186,8 @@
               <a class="dropdown-item btn btn-default">
                 Change Password
               </a>
-              <a class="dropdown-item btn btn-default" href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
+              <a class="dropdown-item btn btn-default">
+                Sign Out
               </a>
             </div>
           </li>
@@ -215,7 +206,7 @@
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="{{asset('images/prahar.jpg')}}" alt="profile image">
+                  <img src="images/faces/facenew.jpg" alt="profile image">
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">Prahar Pandya</p>
@@ -231,17 +222,10 @@
             </div>
           </li>
           <li class="nav-item">
-            @if (\Request::is('*/student'))  
-              <a class="nav-link active" href="{{route('student')}}">
-                <i class="menu-icon mdi mdi-television"></i>
-                <span class="menu-title">Dashboard</span>
-              </a>
-            @else
-              <a class="nav-link" href="{{route('student')}}">
-                <i class="menu-icon mdi mdi-television"></i>
-                <span class="menu-title">Dashboard</span>
-              </a>
-            @endif
+            <a class="nav-link" href="index.html">
+              <i class="menu-icon mdi mdi-television"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -255,13 +239,7 @@
                   <a class="nav-link" href="pages/class.html">Teacher's class</a>
                 </li>
                 <li class="nav-item">
-
-                @if (\Request::is('*/allclasses'))  
-                  <a class="nav-link active" href="{{route('student.allclasses')}}">Show all classes</a>
-                @else
-                   <a class="nav-link" href="{{route('student.allclasses')}}">Show all classes</a>
-                @endif
-                  
+                  <a class="nav-link" href="pages/allclass.html">Show all classes</a>
                 </li>
                 <li class="nav-item">
                    <a class="nav-link btn btn-default" data-toggle="modal" data-target="#classmodal">Join Class
@@ -288,7 +266,7 @@
                   <a class="nav-link btn btn-default" data-toggle="modal" data-target="#parentmodal"> Invite Parent  </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="pages/samples/login.html">Your code : {{$stuinfo->code}} </a>
+                  <a class="nav-link" href="pages/samples/login.html">Your code : pn5x86yuu </a>
                 </li>
               </ul>
             </div>
@@ -319,9 +297,6 @@
           </li>
         </ul>
       </nav>
-
-     
-
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -330,21 +305,256 @@
               <span class="d-block d-md-flex align-items-center">
                 <p>Get Started Now. Join the class and start discussion with your classmates or teachers</p>
                 <a class="btn ml-auto download-button d-none d-md-block" href="https://github.com/BootstrapDash/StarAdmin-Free-Bootstrap-Admin-Template" target="_blank">Verify your mail</a>
-                <a class="btn purchase-button mt-4 mt-md-0" data-toggle="modal" data-target="#parentmodal">Invite your parents</a>
+                <a class="btn purchase-button mt-4 mt-md-0" href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Invite your parents</a>
                 <i class="mdi mdi-close popup-dismiss d-none d-md-block"></i>
               </span>
             </div>
           </div>
+          <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-cube text-danger icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Classes Joined</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0">12</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Attend more classes to learn more
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-receipt text-warning icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Pending Assignment</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0">5</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> It is necessary to submit assignments before deadline to get scroed higher.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-poll-box text-success icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Assignment Submitted</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0">3</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Your Submitted Assignments will be reviewed within 24 hours by your class teacher.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-account-location text-info icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Grade</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0">AB Grade</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Total score : 60/100
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" id="progress">
+            
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title text-primary mb-5">Your Progress</h2>
+                  <div class="wrapper">
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-2">Total Score</p>
+                      <p class="mb-2 text-primary">60/100</p>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 60%" aria-valuenow="60"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="wrapper mt-4">
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-2">Assignment Submitted</p>
+                      <p class="mb-2 text-success">8/10</p>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%" aria-valuenow="80"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="wrapper d-flex justify-content-between">
+                    <div class="side-left">
+                      <p class="mb-2">The best performance</p>
+                      <p class="display-3 mb-4 font-weight-light">30/30</p>
+                    </div>
+                    <div class="side-right">
+                      <small class="text-muted">In Assignment : Assignment_Name</small>
+                    </div>
+                  </div>
+                  <div class="wrapper d-flex justify-content-between">
+                    <div class="side-left">
+                      <p class="mb-2">Worst performance</p>
+                      <p class="display-3 mb-5 font-weight-light">5/30</p>
+                    </div>
+                    <div class="side-right">
+                      <small class="text-muted">In Assignment : Assignment_Name</small>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
           
-           @yield('content')
+          <div class="row" id="score">
+            <div class="col-lg-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Your Running Classes</h4>
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="myTable">
+                      <thead>
+                        <tr>
+                          <th>
+                            #
+                          </th>
+                          <th>
+                            Class name
+                          </th>
+                          <th>
+                            Progress
+                          </th>
+                          <th>
+                            Score
+                          </th>
+                          <th>
+                            Grade
+                          </th>
+                          <th>
+                            Class Rank
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                        
+                        <tr>
+                          <td class="font-weight-medium">
+                            1
+                          </td>
+                          <td>
+                            Maths
+                          </td>
+                          <td>
+                            <div class="progress">
+                              <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" style="width: 20%" aria-valuenow="40" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                          <td>
+                            20/80
+                          </td>
+                          <td class="text-danger"> BB 
+                            
+                          </td>
+                          <td>
+                            260
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-medium">
+                            2
+                          </td>
+                          <td>
+                            Science
+                          </td>
+                          <td>
+                            <div class="progress">
+                              <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                          <td>
+                            60/80
+                          </td>
+                          <td class="text-success">  AB 
+                            
+                          </td>
+                          <td>
+                            15
+                          </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">Discussion</h5>
+                  <div class="fluid-container">
+                    <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
+                      
 
+
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
-              <a href="http://www.github.com/" target="_blank">KickStart</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Specially Made for Students
+              <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
               <i class="mdi mdi-heart text-danger"></i>
             </span>
           </div>
@@ -367,11 +577,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="{{ route('student.inviteparent') }}">
+      <form method="post">
         <div class="modal-body">
-          {{ csrf_field() }}
           <label for="email">Enter Your Parent's Email : </label>
-          <input type="email" name="parentemail">  
+          <input id="email" type="email" name="email">  
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -391,25 +600,24 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="{{ route('student.joinclass') }}">
+      <form method="post">
         <div class="modal-body">
-          {{ csrf_field() }}
-          <label for="text">Enter Class Code : </label>
-          <input type="text" name="code">  
+          <label for="text">Enter Class Id : </label>
+          <input id="text" type="text" name="text">  
           <br><br>
           <div class="row">
             <div class="col-lg-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Top Classes &nbsp;
-                    <a href="pages/class.html" class="btn btn-primary">View All</a>
+                  <h4 class="card-title">Top 5 Classes &nbsp;
+                    <a href="pages/class.html" class="btn btn-primary">View More</a>
                   </h4>
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
                           <th>
-                            Class Code
+                            Class Id
                           </th>
                           <th>
                             Class name
@@ -424,41 +632,78 @@
                       </thead>
                       <tbody>
                         
-                        @if(!empty($classlist))
-
-                            @foreach($classlist as $class)
-
-                                <tr>
-                                  <td class="font-weight-medium">
-                                    {{ $class->code }}
-                                  </td>
-                                  <td>
-                                    Maths
-                                  </td>
-                                  <td>
-                                    60
-                                  </td>
-                                  <td>
-                                    26 +
-                                  </td>
-                                </tr>
-
-                            @endforeach
-
-                        @else
-
-                            Sorry,No Running Classes found.
-
-                        @endif
-
                         
-                          
+                        <tr>
+                          <td class="font-weight-medium">
+                            1njdks
+                          </td>
+                          <td>
+                            Maths
+                          </td>
+                          <td>
+                            60
+                          </td>
+                          <td>
+                            26 +
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-medium">
+                            1njdks
+                          </td>
+                          <td>
+                            Maths
+                          </td>
+                          <td>
+                            60
+                          </td>
+                          <td>
+                            26 +
+                          </td>
+                        </tr><tr>
+                          <td class="font-weight-medium">
+                            1njdks
+                          </td>
+                          <td>
+                            Maths
+                          </td>
+                          <td>
+                            60
+                          </td>
+                          <td>
+                            26 +
+                          </td>
+                        </tr><tr>
+                          <td class="font-weight-medium">
+                            1njdks
+                          </td>
+                          <td>
+                            Maths
+                          </td>
+                          <td>
+                            60
+                          </td>
+                          <td>
+                            26 +
+                          </td>
+                        </tr><tr>
+                          <td class="font-weight-medium">
+                            1njdks
+                          </td>
+                          <td>
+                            Maths
+                          </td>
+                          <td>
+                            60
+                          </td>
+                          <td>
+                            26 +
+                          </td>
+                        </tr>
+                        
                       </tbody>
-
                     </table>
-
                   </div>
-                  You can find class code in class page.
                 </div>
               </div>
             </div>
@@ -474,25 +719,24 @@
 </div>
 
   <!-- plugins:js -->
-  <script src="{{asset('js/vendor.bundle.base.js')}}"></script>
-  <script src="{{asset('js/vendor.bundle.addons.js')}}"></script>
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="vendors/js/vendor.bundle.addons.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="{{asset('js/off-canvas.js')}}"></script>
-  <script src="{{asset('js/misc.js')}}"></script>
+  <script src="js/off-canvas.js"></script>
+  <script src="js/misc.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="{{asset('js/dashboard.js')}}"></script>
+  <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
-  <script type="text/javascript" src="{{asset('js/datatable.js')}}"></script>
+  <script type="text/javascript" src="js/datatable.js"></script>
   <script type="text/javascript">
-    	$(document).ready( function () {
-        $('#myTable').DataTable();
-      });
+  	$(document).ready( function () {
+    $('#myTable').DataTable();
+  });
   </script>
-  @yield('js')
 
   
 
