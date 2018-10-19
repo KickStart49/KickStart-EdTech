@@ -88,6 +88,11 @@ Route::prefix('admin/kickstart/dashboard/teacher')->group(function () {
         'as' => 'teacher.addclass'
     ]);
 
+    Route::get('/home', [
+        'uses' => 'TeacherController@home',
+        'as' => 'teacher.home'
+    ]);
+
 });
 
 // .......................Student .............

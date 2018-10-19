@@ -78,4 +78,9 @@ class TeacherController extends Controller
         }
         return $token;
     }
+
+    public function home()
+    {
+        return view('user.teachers.index'); 
+    }
 }
