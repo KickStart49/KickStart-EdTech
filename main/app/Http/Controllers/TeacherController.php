@@ -8,6 +8,9 @@ use App\Teacher;
 use App\User;
 use App\teacher_class;
 use App\main_class;
+use App\Student;
+
+use App\Notifications\classchapter; 
 
 class TeacherController extends Controller
 {
@@ -48,6 +51,18 @@ class TeacherController extends Controller
                 'main_class_code' => $code,
         ]);
 
+        $assignment = "new assignment";
+        $student_class = main_class::find($code)->student_class;
+        foreach($student_class as $class){
+            Student::find($class->student_code)->user->notify(new classchapter($assignment));
+        }
+        
+        // $students = main_class::find($code)->student_class->student->user;
+
+        // foreach ($students as $student) {
+        //     $user->notify(new classchapter($assignment));
+        // }
+        
         return redirect()->back();
     }
 	

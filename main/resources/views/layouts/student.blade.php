@@ -5,6 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>KickStart Dashboard</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('css/materialdesignicons.min.css')}}">
@@ -112,32 +113,60 @@
               </a>
             </div>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" >
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="mdi mdi-bell"></i>
-              <span class="count">4</span>
+              <span class="count countnotification">{{auth()->user()->unreadNotifications->count()}}</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown" style="overflow-y: scroll; max-height: 500px;">
               <a class="dropdown-item">
-                <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
+                <p class="mb-0 font-weight-normal float-left">You have {{auth()->user()->unreadNotifications->count()}} new notifications
                 </p>
                 <span class="badge badge-pill badge-warning float-right">View all</span>
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-success">
-                    <i class="mdi mdi-alert-circle-outline mx-0"></i>
+              @if(auth()->user()->notifications)
+
+              @foreach(auth()->user()->unreadNotifications as $notification)
+                  <a class="dropdown-item preview-item" style="background: lightgray;">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-success">
+                      <i class="mdi mdi-alert-circle-outline mx-0"></i>
+                    </div>
                   </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium text-dark">Application Error</h6>
-                  <p class="font-weight-light small-text">
-                    Just now
-                  </p>
-                </div>
-              </a>
-              <div class="dropdown-divider"></div>
+                    <div class="preview-item-content">
+                      <h6 class="preview-subject font-weight-medium text-dark">Your Class Assignment</h6>
+
+                      <p class="font-weight-light small-text">
+                        {{$notification->data['data']}}
+                      </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  
+              @endforeach
+
+              @foreach(auth()->user()->readNotifications as $notification)
+                  <a class="dropdown-item preview-item" >
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-success">
+                      <i class="mdi mdi-alert-circle-outline mx-0"></i>
+                    </div>
+                  </div>
+                    <div class="preview-item-content">
+                      <h6 class="preview-subject font-weight-medium text-dark">Your Class Assignment</h6>
+
+                      <p class="font-weight-light small-text">
+                        {{$notification->data['data']}}
+                      </p>
+                    </div>
+                  </a>
+                <div class="dropdown-divider"></div>
+                  
+              @endforeach
+                
+              @endif
+             
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
                   <div class="preview-icon bg-warning">
@@ -490,8 +519,36 @@
   <script type="text/javascript">
     	$(document).ready( function () {
         $('#myTable').DataTable();
+
+        if({{auth()->user()->unreadNotifications->count()}} == 0){
+          $(".countnotification").hide();
+        }
       });
   </script>
+  <script type="text/javascript">
+                $("#notificationDropdown").click(function(){
+                  $.ajaxSetup({
+                    headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                  });
+                  
+                  $.ajax({
+                    method:'post',
+                    url:"{{route('student.notifications')}}",
+                    data: {
+                          
+                    },
+                    
+                    success:function(data){
+                      $(".countnotification").hide();
+                    }
+                });
+                }); 
+                  // Pure JS
+                  
+            
+              </script>
   @yield('js')
 
   

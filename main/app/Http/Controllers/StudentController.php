@@ -10,6 +10,7 @@ use App\main_class;
 
 use App\Mail\InviteParent;
 use Illuminate\Support\Facades\Mail;
+use App\Notifications\classchapter; 
 
 class StudentController extends Controller
 {
@@ -25,6 +26,7 @@ class StudentController extends Controller
 	    return view('user.student.index')->with('classes',$classes)
                                     ->with('classlist',$classlist)
                                     ->with('stuinfo',$student);
+
 	}
 
 	public function joinclass(Request $request){
@@ -42,9 +44,20 @@ class StudentController extends Controller
                 'student_code' => $getcode,
                 'main_class_code' => $request->code,
             ]);
+
+           
+
         }
 
         return redirect()->back();
+    }
+
+    public function notifications(Request $request){
+
+        $user = Auth::user();
+        
+        $user->unreadNotifications->markAsRead();
+
     }
 
     public function inviteparent(Request $request){

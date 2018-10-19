@@ -105,6 +105,8 @@ Route::prefix('admin/kickstart/dashboard/student')->group(function () {
         'as' => 'student.joinclass'
     ]);
 
+    //->middleware('emailverify')
+
     Route::get('/allclasses', [
         'uses' => 'StudentController@allclasses',
         'as' => 'student.allclasses'
@@ -114,6 +116,11 @@ Route::prefix('admin/kickstart/dashboard/student')->group(function () {
         'uses' => 'StudentController@inviteparent',
         'as' => 'student.inviteparent'
     ]);
+
+    Route::post('/notifications', [
+        'uses' => 'StudentController@notifications',
+        'as' => 'student.notifications'
+    ]);    
 
 });
 // .......................Parent .............
@@ -145,7 +152,6 @@ Route::prefix('admin/kickstart/dashboard/teacher')->group(function () {
 
 // .......................Other Routes .............
 // .......................Other Routes .............
-
 
 
 // .......................Laravel Default .............
