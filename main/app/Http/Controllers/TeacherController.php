@@ -83,4 +83,16 @@ class TeacherController extends Controller
     {
         return view('user.teachers.index'); 
     }
+
+    public function class_submit(Request $request)
+    {
+        
+        $class=teacher_class::create([
+            'name'=>$request->name,
+            'grade'=>$request->grade,
+            'area'=>$request->area
+        ]);
+        dd($request->all());
+
+    }
 }

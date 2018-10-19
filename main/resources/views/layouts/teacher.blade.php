@@ -318,13 +318,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" href="">
+      <form method="post" action="{{route('class.submit')}}">
+        {{csrf_field()}}
         <div class="modal-body">
-          <label for="class"><b>Enter the name of class:</b> </label>
-          <input id="class" type="text" name="class"> 
+          <label for="name"><b>Enter the name of class:</b></label>
+          <input id="name" type="text" name="name"> 
             <br><br>
-            <label for="Grade"><b>Select Grade:</b> </label>
-            <select name="Grade">
+            <label for="grade"><b>Select Grade:</b> </label>
+            <select name="grade">
               <option value="">1st</option>
               <option value="">2nd</option>
               <option value="">3rd</option>
@@ -341,7 +342,7 @@
               <option value="">None</option>
             </select>
             <br><br>
-            <label for="Grade"><b>Select Area:</b> </label>
+            <label for="area"><b>Select Area:</b> </label>
             <select name="area">
               <option value="">Science</option>
               <option value="">Commerce</option>

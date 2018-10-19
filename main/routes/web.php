@@ -93,6 +93,11 @@ Route::prefix('admin/kickstart/dashboard/teacher')->group(function () {
         'as' => 'teacher.home'
     ]);
 
+    Route::post('class/submit', [
+        'uses' => 'TeacherController@class_submit',
+        'as' => 'class.submit'
+    ]);
+
 });
 
 // .......................Student .............
