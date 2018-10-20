@@ -128,6 +128,25 @@ Route::prefix('admin/kickstart/dashboard/student')->group(function () {
 
 Route::prefix('admin/kickstart/dashboard/parent')->group(function () {
 
+    Route::get('/', [
+        'uses' => 'ParentController@index',
+        'as' => 'parent'
+    ]);
+
+    Route::post('/addchild', [
+        'uses' => 'ParentController@addchild',
+        'as' => 'parent.addchild'
+    ]);
+
+    Route::get('/allclasses', [
+        'uses' => 'ParentController@allclasses',
+        'as' => 'parent.allclasses'
+    ]);
+
+    Route::post('/invitechild', [
+        'uses' => 'ParentController@invitechild',
+        'as' => 'parent.invitechild'
+    ]);
 
 });
 
