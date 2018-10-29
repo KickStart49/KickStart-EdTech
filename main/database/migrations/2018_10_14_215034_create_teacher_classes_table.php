@@ -23,10 +23,7 @@ class CreateTeacherClassesTable extends Migration
 
             $table->foreign('main_class_code')->references('code')->on('main_classes');   
             $table->foreign('teacher_code')->references('code')->on('teachers');
-            $table->string('name');
-            $table->string('grade');
-            $table->string('area');
-
+            
 
 
 

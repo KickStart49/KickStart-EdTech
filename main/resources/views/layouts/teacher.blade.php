@@ -245,6 +245,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="pages/ui-features/typography.html" data-toggle="modal" data-target="#joinmodal">Join Class</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="pages/ui-features/typography.html" data-toggle="modal" data-target="#showmodal">Show all Classes</a>
+                </li>
               </ul>
             </div>
           </li>
@@ -280,7 +283,16 @@
               </span>
             </div>
           </div>
-          
+          @yield('content')
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
+              <a href="http://www.github.com/" target="_blank">KickStart</a>. All rights reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Specially Made for Students
+                <i class="mdi mdi-heart text-danger"></i>
+              </span>
+            </div>
+          </footer>
 
         </div>
       </div>
@@ -295,7 +307,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post">
+      <form method="post" action="{{route('teacher.joinclass')}}" >
+      {{csrf_field()}}
         <div class="modal-body">
           <label for="text"><b>Enter the Group code :</b> </label>
           <input id="text" type="text" name="text">  
@@ -318,35 +331,36 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="{{route('class.submit')}}">
+
+      <form method="post" action="{{route('teacher.addclass')}}">
         {{csrf_field()}}
         <div class="modal-body">
           <label for="name"><b>Enter the name of class:</b></label>
-          <input id="name" type="text" name="name"> 
+          <input type="text" name="name"> 
             <br><br>
             <label for="grade"><b>Select Grade:</b> </label>
             <select name="grade">
-              <option value="">1st</option>
-              <option value="">2nd</option>
-              <option value="">3rd</option>
-              <option value="">4th</option>
-              <option value="">5th</option>
-              <option value="">6th</option>
-              <option value="">7th</option>
-              <option value="">8th</option>
-              <option value="">9th</option>
-              <option value="">10th</option>
-              <option value="">11th</option>
-              <option value="">12th</option>
-              <option value="">Higher Education</option>
-              <option value="">None</option>
+              <option value="1st">1st</option>
+              <option value="2nd">2nd</option>
+              <option value="3rd">3rd</option>
+              <option value="4th">4th</option>
+              <option value="5th">5th</option>
+              <option value="6th">6th</option>
+              <option value="7th">7th</option>
+              <option value="8th">8th</option>
+              <option value="9th">9th</option>
+              <option value="10th">10th</option>
+              <option value="11th">11th</option>
+              <option value="12th">12th</option>
+              <option value="Higher Education">Higher Education</option>
+              <option value="None">None</option>
             </select>
             <br><br>
             <label for="area"><b>Select Area:</b> </label>
             <select name="area">
-              <option value="">Science</option>
-              <option value="">Commerce</option>
-              <option value="">Arts</option>
+              <option value="Science">Science</option>
+              <option value="Commerce">Commerce</option>
+              <option value="Arts">Arts</option>
             </select>
 
  
@@ -356,13 +370,55 @@
           <button type="submit" class="btn btn-primary">Create &nbsp;<i class="fa fa-paper-plane" aria-hidden="true"></i></button>
         </div>
       </form>
+      
+
     </div>
   </div>
 </div>
- @yield('content')
 
+<!--show classes-->
+<div class="modal fade" id="showmodal" tabindex="-1" role="dialog" aria-labelledby="parentmodalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="parentModalLongTitle">All Class</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Grade</th>
+                <th>Area</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{-- $classes =main_class::lists('name'); --}}
+              {{-- $user = Auth::user();
+              $teacher = $user->teacher;
 
-
+              $classes = $teacher->teacher_class;
+ --}}
+                   
+              @foreach($classes as $class)
+              <tr>
+                <td>{{ $class->name}}</td>
+                <td>{{ $class->grade}}</td>
+                <td>{{ $class->area}}</td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
 
 
 

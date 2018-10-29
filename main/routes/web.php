@@ -83,20 +83,23 @@ Route::prefix('admin/kickstart/dashboard/teacher')->group(function () {
         'as' => 'teacher'
     ]);
 
-    Route::get('/addclass', [
+    Route::post('/addclass', [
         'uses' => 'TeacherController@addclass',
         'as' => 'teacher.addclass'
     ]);
+
+    Route::post('/joinclass', [
+        'uses' => 'TeacherController@joinclass',
+        'as' => 'teacher.joinclass'
+    ]);
+
 
     Route::get('/home', [
         'uses' => 'TeacherController@home',
         'as' => 'teacher.home'
     ]);
 
-    Route::post('class/submit', [
-        'uses' => 'TeacherController@class_submit',
-        'as' => 'class.submit'
-    ]);
+    
 
 });
 

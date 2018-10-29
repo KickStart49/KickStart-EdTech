@@ -10,7 +10,7 @@ class main_class extends Model
     protected $primaryKey = 'code';
     
 	protected $fillable = [
-        'code','assignment'
+        'code','assignment','name','grade','area'
     ];
 
     protected $casts = ['code' => 'string'];

@@ -10,6 +10,7 @@ use App\teacher_class;
 use App\main_class;
 use App\Student;
 
+
 use App\Notifications\classchapter; 
 
 class TeacherController extends Controller
@@ -22,29 +23,39 @@ class TeacherController extends Controller
 	    $classes = $teacher->teacher_class;
 
 	    if($classes){
-	    	return view('user.teacher')->with('classes',$classes);
+	    	return view('user.teachers.index')->with('classes',$classes);
 	    }else{
-	    	return view('user.teacher');	
+	    	return view('user.teachers.index');	
 	    }
 	}
+    // public function joinclass(Request $request)
+    // {
+
+    // }
 
 
-	public function addclass(){
+	public function addclass(Request $request){
 
         $user = Auth::user();
         $teacher = $user ->teacher;
         $id = $user->id;
-
         $getcode = $teacher ->code;
+                
         
         $token = $this->getToken(6, $id);
         $code = 'KSC'. $token . substr(strftime("%Y", time()),2) . sha1(time());
         $code = str_limit($code, $limit = 20, $end = '');
 
+
         main_class::create([
                 'code' => $code,
                 'assignment' => "new aassignment",
-        ]);        
+                'name' => $request->name,
+                'grade' => $request->grade,
+                'area' => $request->area,
+                
+        ]);   
+    
         teacher_class::create([
                 'teacher_code' => $getcode,
                 'class_admin' => 1,
@@ -63,7 +74,8 @@ class TeacherController extends Controller
         //     $user->notify(new classchapter($assignment));
         // }
         
-        return redirect()->back();
+        return redirect()->back(); 
+
     }
 	
 	private function getToken($length, $seed){    
@@ -84,15 +96,5 @@ class TeacherController extends Controller
         return view('user.teachers.index'); 
     }
 
-    public function class_submit(Request $request)
-    {
-        
-        $class=teacher_class::create([
-            'name'=>$request->name,
-            'grade'=>$request->grade,
-            'area'=>$request->area
-        ]);
-        dd($request->all());
-
-    }
+   
 }

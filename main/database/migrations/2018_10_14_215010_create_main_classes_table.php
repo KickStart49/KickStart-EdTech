@@ -17,6 +17,9 @@ class CreateMainClassesTable extends Migration
 
             $table->string('code')->primary();
             $table->string('assignment');
+            $table->string('name')->nullable();
+            $table->string('grade')->nullable();
+            $table->string('area')->nullable();
             $table->timestamps();
 
         });
