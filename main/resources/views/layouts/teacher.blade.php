@@ -396,7 +396,7 @@
               </tr>
             </thead>
             <tbody>
-              {{-- $classes =main_class::lists('name'); --}}
+              {{-- $classes =main_class::all('name','grade','area'); --}}
               {{-- $user = Auth::user();
               $teacher = $user->teacher;
 

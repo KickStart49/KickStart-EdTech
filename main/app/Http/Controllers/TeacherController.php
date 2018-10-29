@@ -9,6 +9,7 @@ use App\User;
 use App\teacher_class;
 use App\main_class;
 use App\Student;
+use DB;
 
 
 use App\Notifications\classchapter; 
@@ -20,7 +21,10 @@ class TeacherController extends Controller
 		$user = Auth::user();
 	    $teacher = $user->teacher;
 
-	    $classes = $teacher->teacher_class;
+	    //$classes = $teacher->teacher_class;
+
+        $classes = DB::select('select * from main_classes');
+
 
 	    if($classes){
 	    	return view('user.teachers.index')->with('classes',$classes);
