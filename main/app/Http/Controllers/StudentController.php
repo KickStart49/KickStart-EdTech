@@ -10,6 +10,7 @@ use App\main_class;
 
 use App\Mail\InviteParent;
 use Illuminate\Support\Facades\Mail;
+
 use App\Notifications\classchapter; 
 
 class StudentController extends Controller

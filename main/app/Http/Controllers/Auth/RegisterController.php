@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Teacher;
 use App\Student;
 use App\User;
+use App\ParentOfChildren;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -42,20 +43,6 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
-    private function getToken($length, $seed){    
-        $token = "";
-        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        $codeAlphabet.= "0123456789";
-
-        mt_srand($seed);      // Call once. Good since $application_id is unique.
-
-        for($i=0;$i<$length;$i++){
-            $token .= $codeAlphabet[mt_rand(0,strlen($codeAlphabet)-1)];
-        }
-        return $token;
-    }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -92,8 +79,7 @@ class RegisterController extends Controller
 
         if( $data['category'] == "teacher" ){
 
-            $token = $this->getToken(6, $id);
-            $code = 'KST'. $token . substr(strftime("%Y", time()),2) . sha1(time());
+            $code = 'KSt'. sha1(time());
             $code = str_limit($code, $limit = 20, $end = '');
 
             Teacher::create([
@@ -105,13 +91,24 @@ class RegisterController extends Controller
 
         if( $data['category'] == "student" ){
 
-            $token = $this->getToken(6, $user->id);
-            $code = 'KSS'. $token . substr(strftime("%Y", time()),2) . sha1(time());
+            $code = 'KSs'. sha1(time());
             $code = str_limit($code, $limit = 20, $end = '');
 
             Student::create([
                 'user_id' => $id,
                 'code' => $code,
+            
+            ]);
+        }
+
+        if( $data['category'] == "parent" ){
+
+            $code = 'KSp' . sha1(time());
+            $code = str_limit($code, $limit = 20, $end = '');
+
+            ParentOfChildren::create([
+                'user_id' => $id,
+                'parent_code' => $code,
             
             ]);
         }

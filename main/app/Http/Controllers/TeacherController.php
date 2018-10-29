@@ -62,11 +62,11 @@ class TeacherController extends Controller
                 'main_class_code' => $code,
         ]);
 
-        $assignment = "new assignment";
-        $student_class = main_class::find($code)->student_class;
-        foreach($student_class as $class){
-            Student::find($class->student_code)->user->notify(new classchapter($assignment));
-        }
+        // $assignment = "new assignment";
+        // $student_class = main_class::find($code)->student_class;
+        // foreach($student_class as $class){
+        //     Student::find($class->student_code)->user->notify(new classchapter($assignment));
+        // }
         
         // $students = main_class::find($code)->student_class->student->user;
 

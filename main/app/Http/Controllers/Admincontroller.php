@@ -25,7 +25,7 @@ class AdminController extends Controller
         }
         if($admin->permission == "parent")
         {
-            return view('user.parent');
+            return redirect()->route('parent');
         }
         if($admin->permission == "administrator")
         {

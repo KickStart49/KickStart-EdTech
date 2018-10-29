@@ -25,5 +25,10 @@ class Student extends Model
     {
         return $this->hasMany('App\student_class');
     }
+    public function parent()
+    {
+        return $this->belongsToMany('App\ParentOfChildren');
+    }
+
 
 }
