@@ -22,12 +22,16 @@ class TeacherController extends Controller
 	    $teacher = $user->teacher;
 
 	    //$classes = $teacher->teacher_class;
+        
 
-        $classes = DB::select('select * from main_classes');
+
+        //$classes = DB::select('select * from main_classes');
+        $classes=main_class::all();
 
 
 	    if($classes){
 	    	return view('user.teachers.index')->with('classes',$classes);
+
 	    }else{
 	    	return view('user.teachers.index');	
 	    }
