@@ -394,8 +394,8 @@
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Grade</th>
-                <th>Area</th>
+                <th>Code</th>
+                <th>Give assignment</th>
               </tr>
             </thead>
             <tbody>
@@ -409,8 +409,12 @@
               @foreach($classes as $class)
               <tr>
                 <td>{{ $class->name}}</td>
-                <td>{{ $class->grade}}</td>
-                <td>{{ $class->area}}</td>
+                <td>{{ $class->code}}</td>
+                <td>
+                  <form method="get" action="{{route('teacher.assignment')}}">
+                    <button type="submit" class="btn btn-primary">create</button>
+                  </form>    
+                </td>
               </tr>
               @endforeach
             </tbody>

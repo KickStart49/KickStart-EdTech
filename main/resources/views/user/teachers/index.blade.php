@@ -1,6 +1,4 @@
 @extends('layouts.teacher')
 @section('content')
-xcvcvcvcvcvcvcdjsbjd
-
-
+mgjfgjfg
 @stop

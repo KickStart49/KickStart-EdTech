@@ -25,4 +25,8 @@ class main_class extends Model
     {
         return $this->hasMany('App\student_class');
     }
+    public function Assignment()
+    {
+        return $this->hasMany('App\Assignment');
+    }
 }

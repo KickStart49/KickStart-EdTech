@@ -10,7 +10,9 @@ use App\teacher_class;
 use App\main_class;
 use App\student_class;
 use App\Student;
+use App\Assignment;
 use DB;
+
 
 
 use App\Notifications\classchapter; 
@@ -41,6 +43,30 @@ class TeacherController extends Controller
     // {
 
     // }
+    public function assignment()
+    {
+
+        $user = Auth::user();
+        $teacher = $user->teacher;
+        $classes=main_class::all();
+
+        if($classes){
+        return view('user.teachers.assignment')->with('classes',$classes);
+    }else{
+        return view('user.teachers.assignment');   
+    }
+    }
+    public function save_assignment(Request $request)
+    {
+        
+        Assignment::create([
+        'title'=>$request->title,
+        'class_code'=>$request->code,
+        'file'=>$request->file,
+        'msg'=>$request->msg,
+        ]);
+        return redirect()->back();
+    }
     
 
 
