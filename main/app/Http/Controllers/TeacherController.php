@@ -8,6 +8,7 @@ use App\Teacher;
 use App\User;
 use App\teacher_class;
 use App\main_class;
+use App\student_class;
 use App\Student;
 use DB;
 
@@ -40,6 +41,7 @@ class TeacherController extends Controller
     // {
 
     // }
+    
 
 
 	public function addclass(Request $request){

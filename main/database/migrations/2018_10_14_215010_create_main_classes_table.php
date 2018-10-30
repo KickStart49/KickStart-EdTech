@@ -16,7 +16,7 @@ class CreateMainClassesTable extends Migration
         Schema::create('main_classes', function (Blueprint $table) {
 
             $table->string('code')->primary();
-            $table->string('assignment');
+            $table->string('assignment')->nullable();
             $table->string('name')->nullable();
             $table->string('grade')->nullable();
             $table->string('area')->nullable();

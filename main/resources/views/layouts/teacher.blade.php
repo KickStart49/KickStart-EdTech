@@ -237,7 +237,7 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/typography.html" data-toggle="modal" data-target="#createmodal">Manage Classes</a>
+                  <a class="nav-link"  href="pages/ui-features/typography.html" data-toggle="modal" data-target="#managemodal">Manage Classes</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="pages/ui-features/typography.html" data-toggle="modal" data-target="#createmodal">Create Class</a>
@@ -283,6 +283,7 @@
               </span>
             </div>
           </div>
+          
           @yield('content')
           <footer class="footer">
             <div class="container-fluid clearfix">
@@ -296,6 +297,7 @@
 
         </div>
       </div>
+  
 
   <!-- Join Modal -->
   <div class="modal fade" id="joinmodal" tabindex="-1" role="dialog" aria-labelledby="parentmodalTitle" aria-hidden="true">
@@ -375,6 +377,7 @@
     </div>
   </div>
 </div>
+
 
 <!--show classes-->
 <div class="modal fade" id="showmodal" tabindex="-1" role="dialog" aria-labelledby="parentmodalTitle" aria-hidden="true">
