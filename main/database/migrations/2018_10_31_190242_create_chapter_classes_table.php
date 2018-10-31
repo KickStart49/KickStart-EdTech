@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMainClassesTable extends Migration
+class CreateChapterClassesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateMainClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('main_classes', function (Blueprint $table) {
-
-            $table->string('code')->primary();
-            $table->string('name')->nullable();
-            $table->string('grade')->nullable();
-            $table->string('area')->nullable();
+        Schema::create('chapter_classes', function (Blueprint $table) {
+            $table->increments('id');
             $table->timestamps();
-
         });
     }
 
@@ -31,6 +26,6 @@ class CreateMainClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('main_classes');
+        Schema::dropIfExists('chapter_classes');
     }
 }

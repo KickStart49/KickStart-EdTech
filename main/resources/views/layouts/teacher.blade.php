@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="{{asset('css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/vendor.bundle.base.css')}}">
   <link rel="stylesheet" href="{{asset('css/vendor.bundle.addons.css')}}">
+  <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('css/teacher.css')}}">
+
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -22,6 +25,7 @@
     .nav-link.active{
       color: #308ee0!important;
     }
+    
   </style>
   @yield('css')
 </head>
@@ -48,6 +52,8 @@
             <a href="#" class="nav-link">
               <i class="mdi mdi-elevation-rise"></i>Work</a>
           </li>
+          
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="mdi mdi-bookmark-plus-outline"></i>Members</a>
@@ -394,8 +400,8 @@
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Code</th>
-                <th>Give assignment</th>
+                <th>Assignment</th>
+                <th>Chapter</th>
               </tr>
             </thead>
             <tbody>
@@ -409,10 +415,14 @@
               @foreach($classes as $class)
               <tr>
                 <td>{{ $class->name}}</td>
-                <td>{{ $class->code}}</td>
                 <td>
                   <form method="get" action="{{route('teacher.assignment',['code'=>$class->code])}}">
                     <button type="submit" class="btn btn-primary">create</button>
+                  </form>    
+                </td>
+                <td>
+                  <form method="get" action="{{route('teacher.chapter',['code'=>$class->code])}}">
+                    <button type="submit" class="btn btn-primary">Add</button>
                   </form>    
                 </td>
               </tr>
@@ -433,6 +443,7 @@
   <!-- plugins:js -->
   <script src="{{asset('js/vendor.bundle.base.js')}}"></script>
   <script src="{{asset('js/vendor.bundle.addons.js')}}"></script>
+  <script src="{{asset('js/jquery.min.js')}}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->

@@ -11,6 +11,7 @@ use App\main_class;
 use App\student_class;
 use App\Student;
 use App\Assignment;
+use App\Chapter;
 use DB;
 
 
@@ -67,7 +68,29 @@ class TeacherController extends Controller
         ]);
         return redirect()->back();
     }
-    
+    public function chapter($code)
+    {
+
+        $user = Auth::user();
+        $teacher = $user->teacher;
+        $classes=main_class::all();
+
+        if($classes){
+        return view('user.teachers.chapter')->with('classes',$classes)->with('code',$code);
+    }else{
+        return view('user.teachers.chapter');   
+    }
+    }
+    public function save_chapter(Request $request)
+    {
+        
+        Chapter::create([
+        'title'=>$request->title,
+        'class_code'=>$request->code,
+        'file'=>$request->file,
+        ]);
+        return redirect()->back();
+    }
 
 
 	public function addclass(Request $request){

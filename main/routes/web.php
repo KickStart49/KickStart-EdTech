@@ -101,6 +101,14 @@ Route::prefix('admin/kickstart/dashboard/teacher')->group(function () {
         'uses' => 'TeacherController@save_assignment',
         'as' => 'teacher.save_assignment'
     ]);
+    Route::get('/chapter/{code}', [
+        'uses' => 'TeacherController@chapter',
+        'as' => 'teacher.chapter'
+    ]);
+    Route::post('/save_chapter', [
+        'uses' => 'TeacherController@save_chapter',
+        'as' => 'teacher.save_chapter'
+    ]);
     
 
 
