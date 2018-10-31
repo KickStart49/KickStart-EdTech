@@ -43,7 +43,7 @@ class TeacherController extends Controller
     // {
 
     // }
-    public function assignment()
+    public function assignment($code)
     {
 
         $user = Auth::user();
@@ -51,7 +51,7 @@ class TeacherController extends Controller
         $classes=main_class::all();
 
         if($classes){
-        return view('user.teachers.assignment')->with('classes',$classes);
+        return view('user.teachers.assignment')->with('classes',$classes)->with('code',$code);
     }else{
         return view('user.teachers.assignment');   
     }

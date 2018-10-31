@@ -411,7 +411,7 @@
                 <td>{{ $class->name}}</td>
                 <td>{{ $class->code}}</td>
                 <td>
-                  <form method="get" action="{{route('teacher.assignment')}}">
+                  <form method="get" action="{{route('teacher.assignment',['code'=>$class->code])}}">
                     <button type="submit" class="btn btn-primary">create</button>
                   </form>    
                 </td>

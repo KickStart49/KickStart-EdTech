@@ -6,7 +6,7 @@
           <input type="text" name="title"> 
           <br><br>
           <label for="code"><b>Enter the code of class:</b></label>
-          <input type="text" name="code">
+          <input type="text" name="code" value="{{$code}}">
           <br><br>
           <label for="file"><b>Attach File:</b></label>
           <input type="file" name="file">

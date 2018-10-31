@@ -93,7 +93,7 @@ Route::prefix('admin/kickstart/dashboard/teacher')->group(function () {
         'as' => 'teacher.joinclass'
     ]);
 
-    Route::get('/assignment', [
+    Route::get('/assignment/{code}', [
         'uses' => 'TeacherController@assignment',
         'as' => 'teacher.assignment'
     ]);
