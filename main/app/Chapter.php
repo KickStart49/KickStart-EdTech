@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chapter extends Model
 {
+	protected $primaryKey = 'code';
     protected $fillable = [
-        'title','file','class_code'
+        'title','file','code'
     ];
-    public function main_class()
+    public function chapter_class()
     {
-        return $this->belongsTo('App\main_class');
+        return $this->belongsTo('App\chapter_class');
     }
 }

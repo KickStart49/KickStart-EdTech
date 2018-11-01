@@ -14,9 +14,7 @@ class CreateChaptersTable extends Migration
     public function up()
     {
         Schema::create('chapters', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('class_code');
-            $table->foreign('class_code')->references('code')->on('main_classes');
+            $table->string('code')->primary();
             $table->string('title');
             $table->string('file');
             $table->timestamps();

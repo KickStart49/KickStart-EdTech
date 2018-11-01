@@ -13,6 +13,7 @@ use App\Student;
 use App\Assignment;
 use App\Chapter;
 use App\assignment_class;
+use App\chapter_class;
 use DB;
 
 
@@ -95,13 +96,24 @@ class TeacherController extends Controller
         return view('user.teachers.chapter');   
     }
     }
-    public function save_chapter(Request $request)
+    public function save_chapter(Request $request,$code)
     {
+
+        $user = Auth::user();
+        $id = $user->id;       
+
+        $token = $this->getToken(6, $id);
+        $ch_code = 'KSC'. $token . substr(strftime("%Y", time()),2) . sha1(time());
+        $ch_code = str_limit($ch_code, $limit = 20, $end = '');
         
         Chapter::create([
         'title'=>$request->title,
-        'class_code'=>$request->code,
+        'code'=>$ch_code,
         'file'=>$request->file,
+        ]);
+        chapter_class::create([
+        'chapter_code'=>$ch_code,
+        'main_class_code'=>$code,
         ]);
         return redirect()->back();
     }

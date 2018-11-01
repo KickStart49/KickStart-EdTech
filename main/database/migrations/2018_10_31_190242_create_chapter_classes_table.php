@@ -15,6 +15,10 @@ class CreateChapterClassesTable extends Migration
     {
         Schema::create('chapter_classes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('chapter_code');
+            $table->string('main_class_code');
+            $table->foreign('main_class_code')->references('code')->on('main_classes');
+            $table->foreign('chapter_code')->references('code')->on('chapters');
             $table->timestamps();
         });
     }
