@@ -10,7 +10,7 @@ class main_class extends Model
     protected $primaryKey = 'code';
     
 	protected $fillable = [
-        'code','assignment','name','grade','area'
+        'code','name','grade','area'
     ];
 
     protected $casts = ['code' => 'string'];
@@ -25,9 +25,9 @@ class main_class extends Model
     {
         return $this->hasMany('App\student_class');
     }
-    public function Assignment()
+    public function assignment_class()
     {
-        return $this->hasMany('App\Assignment');
+        return $this->hasMany('App\assignment_class');
     }
     public function Chapter()
     {

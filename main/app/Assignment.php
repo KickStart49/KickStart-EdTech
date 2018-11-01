@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Assignment extends Model
 {
+	protected $primaryKey = 'code';
     protected $fillable = [
-        'title','class_code','file','msg'
+        'title','code','file','msg'
     ];
-    public function main_class()
+    public function assignment_class()
     {
-        return $this->belongsTo('App\main_class');
+        return $this->belongsTo('App\assignment_class');
     }
 }

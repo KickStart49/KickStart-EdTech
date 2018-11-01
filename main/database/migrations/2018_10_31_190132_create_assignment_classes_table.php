@@ -15,6 +15,10 @@ class CreateAssignmentClassesTable extends Migration
     {
         Schema::create('assignment_classes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('assignment_code');
+            $table->string('main_class_code');
+            $table->foreign('main_class_code')->references('code')->on('main_classes');
+            $table->foreign('assignment_code')->references('code')->on('assignments');
             $table->timestamps();
         });
     }

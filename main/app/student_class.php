@@ -10,7 +10,7 @@ class student_class extends Model
         'student_code','main_class_code'
     ];
 
-    public function student()
+    public function Student()
     {
         return $this->belongsToMany('App\Student');
     }

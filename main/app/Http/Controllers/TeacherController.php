@@ -12,6 +12,7 @@ use App\student_class;
 use App\Student;
 use App\Assignment;
 use App\Chapter;
+use App\assignment_class;
 use DB;
 
 
@@ -57,15 +58,28 @@ class TeacherController extends Controller
         return view('user.teachers.assignment');   
     }
     }
-    public function save_assignment(Request $request)
+    public function save_assignment(Request $request,$code)
     {
+        $user = Auth::user();
+        $id = $user->id;       
+
+        $token = $this->getToken(6, $id);
+        $assi_code = 'KSC'. $token . substr(strftime("%Y", time()),2) . sha1(time());
+        $assi_code = str_limit($assi_code, $limit = 20, $end = '');
+
         
         Assignment::create([
+        'code'=>$assi_code,
         'title'=>$request->title,
-        'class_code'=>$request->code,
         'file'=>$request->file,
         'msg'=>$request->msg,
         ]);
+
+        assignment_class::create([
+        'assignment_code'=>$assi_code,
+        'main_class_code'=>$code,
+        ]);
+
         return redirect()->back();
     }
     public function chapter($code)
@@ -108,7 +122,6 @@ class TeacherController extends Controller
 
         main_class::create([
                 'code' => $code,
-                'assignment' => "new aassignment",
                 'name' => $request->name,
                 'grade' => $request->grade,
                 'area' => $request->area,

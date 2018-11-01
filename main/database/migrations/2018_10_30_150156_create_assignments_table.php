@@ -14,10 +14,8 @@ class CreateAssignmentsTable extends Migration
     public function up()
     {
         Schema::create('assignments', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('code')->primary();
             $table->string('title');
-            $table->string('class_code');
-            $table->foreign('class_code')->references('code')->on('main_classes');
             $table->string('file');
             $table->string('msg');
             $table->timestamps();
